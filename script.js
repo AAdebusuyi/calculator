@@ -18,6 +18,7 @@ function divide(...numbers) {
   return numbers.reduce((total, value) => (total /= value));
 }
 
+//places where this might be called: 'equals to' operator
 function operate(num1, num2, operator) {
   num1 = Number(num1);
   num2 = Number(num2);
