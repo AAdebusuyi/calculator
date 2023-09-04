@@ -2,6 +2,15 @@ let num1;
 let num2;
 let operator;
 
+const screen = document.querySelector(".screen");
+const clearBtn = document.querySelector(".clear");
+const deleteBtn = document.querySelector(".delete");
+const divideBtn = document.getElementById("divide");
+const multiplyBtn = document.getElementById("multiply");
+const subtractBtn = document.getElementById("subtract");
+const addBtn = document.getElementById("add");
+const numBtn = document.querySelectorAll(".number-button");
+
 function add(...numbers) {
   return numbers.reduce((total, value) => (total += value), 0);
 }
