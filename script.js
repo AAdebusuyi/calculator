@@ -9,6 +9,7 @@ const divideBtn = document.getElementById("divide");
 const multiplyBtn = document.getElementById("multiply");
 const subtractBtn = document.getElementById("subtract");
 const addBtn = document.getElementById("add");
+const equalBtn = document.getElementById("equal");
 const numBtn = document.querySelectorAll(".number-button");
 
 numBtn.forEach((number) =>
@@ -16,18 +17,39 @@ numBtn.forEach((number) =>
 );
 
 addBtn.addEventListener("click", () => displayText(addBtn.textContent));
+
 subtractBtn.addEventListener("click", () =>
   displayText(subtractBtn.textContent)
 );
+
 multiplyBtn.addEventListener("click", () =>
   displayText(multiplyBtn.textContent)
 );
+
 divideBtn.addEventListener("click", () => displayText(divideBtn.textContent));
+
+equalBtn.addEventListener("click", () => {
+  displayText("= " + evaluate(screen.textContent));
+});
 
 function displayText(value) {
   if (screen.textContent == 0) screen.textContent = "";
   screen.textContent += " " + value;
 }
+
+function evaluate(value) {
+  const array = value.split(" ");
+  const removedSpace = array.shift();
+  let num1 = array[0];
+  let num2 = array[2];
+  let operator = array[1];
+  let result = operate(num1, num2, operator);
+  return result;
+}
+
+// take screen content and split it
+// assign each of the contents of the split to a global defined variable
+// create a function that takes those redefined variables and operates on them
 
 function add(...numbers) {
   return numbers.reduce((total, value) => (total += value), 0);
