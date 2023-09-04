@@ -33,6 +33,8 @@ equalBtn.addEventListener("click", () => {
   screen.textContent = result;
 });
 
+clearBtn.addEventListener("click", () => location.reload());
+
 function displayText(value) {
   if (screen.textContent == 0) screen.textContent = "";
   screen.textContent += " " + value;
