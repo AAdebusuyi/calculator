@@ -29,7 +29,8 @@ multiplyBtn.addEventListener("click", () =>
 divideBtn.addEventListener("click", () => displayText(divideBtn.textContent));
 
 equalBtn.addEventListener("click", () => {
-  displayText("= " + evaluate(screen.textContent));
+  const result = evaluate(screen.textContent);
+  screen.textContent = result;
 });
 
 function displayText(value) {
