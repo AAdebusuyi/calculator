@@ -11,6 +11,24 @@ const subtractBtn = document.getElementById("subtract");
 const addBtn = document.getElementById("add");
 const numBtn = document.querySelectorAll(".number-button");
 
+numBtn.forEach((number) =>
+  number.addEventListener("click", () => displayText(number.textContent))
+);
+
+addBtn.addEventListener("click", () => displayText(addBtn.textContent));
+subtractBtn.addEventListener("click", () =>
+  displayText(subtractBtn.textContent)
+);
+multiplyBtn.addEventListener("click", () =>
+  displayText(multiplyBtn.textContent)
+);
+divideBtn.addEventListener("click", () => displayText(divideBtn.textContent));
+
+function displayText(value) {
+  if (screen.textContent == 0) screen.textContent = "";
+  screen.textContent += " " + value;
+}
+
 function add(...numbers) {
   return numbers.reduce((total, value) => (total += value), 0);
 }
