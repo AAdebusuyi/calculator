@@ -33,7 +33,23 @@ equalBtn.addEventListener("click", () => {
   screen.textContent = result;
 });
 
-clearBtn.addEventListener("click", () => location.reload());
+deleteBtn.addEventListener("click", () => backspace(screen.textContent));
+
+function backspace(value) {
+  if (value.length <= 1) {
+    screen.textContent = "0";
+  } else {
+    let result = value.slice(0, -2);
+    screen.textContent = result;
+  }
+}
+
+clearBtn.addEventListener("click", () => clear());
+
+function clear() {
+  if (screen.textContent !== null || screen.textContent !== 0)
+    location.reload();
+}
 
 function displayText(value) {
   if (screen.textContent == 0) screen.textContent = "";
