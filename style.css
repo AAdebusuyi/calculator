@@ -85,7 +85,7 @@ button.delete {
   background-color: paleturquoise;
 }
 
-.buttons {
+.calculator-keys {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
