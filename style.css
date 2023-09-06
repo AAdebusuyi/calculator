@@ -63,7 +63,7 @@ body {
   border-radius: 10px;
 }
 
-button.clear {
+button#clear {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,7 +74,7 @@ button.clear {
   background-color: palevioletred;
 }
 
-button.delete {
+button#delete {
   display: flex;
   justify-content: center;
   align-items: center;
