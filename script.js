@@ -1,3 +1,4 @@
+const calculator = document.querySelector(".calculator");
 const buttons = document.querySelector(".buttons-container");
 const screen = document.querySelector(".screen");
 
@@ -10,7 +11,7 @@ buttons.addEventListener("click", (e) => {
     const screenValue = screen.textContent;
     // checks for when number buttons are clicked
     if (!action) {
-      if (screenValue === "0") {
+      if (screenValue === "0" || previousButtonType === "operator") {
         screen.textContent = buttonValue;
       } else {
         screen.textContent += buttonValue;
@@ -28,9 +29,8 @@ buttons.addEventListener("click", (e) => {
       action === "divide"
     ) {
       button.classList.add("is-depressed");
-      setTimeout(() => {
-        button.classList.remove("is-depressed");
-      }, 75);
+      //add custom attribute
+      calculator.dataset.previousButtonType = "operator";
     }
     // checks decimal button...
     if (action === "decimal") {
@@ -61,5 +61,9 @@ buttons.addEventListener("click", (e) => {
         button.classList.remove("is-depressed");
       }, 75);
     }
+
+    Array.from(button.parentNode.children).forEach((b) =>
+      b.classList.remove("is-depressed")
+    );
   }
 });
