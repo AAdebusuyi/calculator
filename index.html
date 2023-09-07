@@ -12,8 +12,10 @@
         <div class="screen">0</div>
         <div class="buttons-container">
           <div class="delete-buttons">
-            <button type="button" id="clear">CLEAR</button>
-            <button type="button" id="delete">DELETE</button>
+            <button type="button" data-action="clear" id="clear">CLEAR</button>
+            <button type="button" data-action="delete" id="delete">
+              DELETE
+            </button>
           </div>
           <div class="calculator-buttons">
             <button class="number-button" type="button">7</button>
@@ -34,7 +36,7 @@
             <button data-action="subtract" class="key-operator" type="button">
               -
             </button>
-            <button id="decimal" type="button">.</button>
+            <button data-action="decimal" type="button">.</button>
             <button class="number-button" type="button">0</button>
             <button data-action="calculate" class="key-equal" type="button">
               =
