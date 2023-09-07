@@ -1,29 +1,42 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-size: larger;
+  border: 1px solid red; /* Replace with your border styles */
+  box-sizing: border-box;
 }
 
-.container {
-  /* border: 1px solid red; */
+body {
+  border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  flex-direction: column;
+  font-size: larger;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 50px;
+  width: 500px;
+  height: 700px;
 }
 
 .calculator {
   display: flex;
   flex-direction: column;
   border: 2px solid #000000;
-  min-height: 700px;
-  min-width: 550px;
+  height: 100%;
+  width: 100%;
   background-color: #a9a9a9;
   border-radius: 20px;
 }
@@ -36,7 +49,7 @@ body {
   border-radius: 10px;
   background-color: whitesmoke;
   width: 80%;
-  height: 15vh;
+  height: 100px;
   align-self: center;
   font-size: 2.2rem;
   padding: 10px;
@@ -56,7 +69,7 @@ body {
 .delete-buttons {
   display: flex;
   margin-top: 20px;
-  height: 10vh;
+  height: 80px;
   /* border: 1px solid green; */
   width: 80%;
   justify-content: space-around;
