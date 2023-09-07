@@ -9,7 +9,6 @@ body {
 }
 
 body {
-  border: 1px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,6 +103,12 @@ button#delete {
   margin-top: 25px;
   height: 75%;
   width: 80%;
+}
+
+.is-depressed {
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5) inset;
+  opacity: 0.9;
 }
 
 button {
