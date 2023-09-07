@@ -8,16 +8,20 @@ buttons.addEventListener("click", (e) => {
     const action = button.dataset.action;
     const buttonValue = button.textContent;
     const screenValue = screen.textContent;
+    // checks for when number buttons are clicked
     if (!action) {
-      // checks for when number buttons are clicked
       if (screenValue === "0") {
         screen.textContent = buttonValue;
       } else {
         screen.textContent += buttonValue;
       }
+      button.classList.add("is-depressed");
+      setTimeout(() => {
+        button.classList.remove("is-depressed");
+      }, 75);
     }
+    //checks for when operator buttons are clicked
     if (
-      //checks for when operator buttons are clicked
       action === "add" ||
       action === "subtract" ||
       action === "multiply" ||
@@ -28,21 +32,34 @@ buttons.addEventListener("click", (e) => {
         button.classList.remove("is-depressed");
       }, 75);
     }
+    // checks decimal button...
     if (action === "decimal") {
-      // checks decimal button...
       screen.textContent += ".";
+      button.classList.add("is-depressed");
+      setTimeout(() => {
+        button.classList.remove("is-depressed");
+      }, 75);
     }
+    // checks equals to button...
     if (action === "equal") {
-      // checks equals to button...
-      console.log("equals button");
+      button.classList.add("is-depressed");
+      setTimeout(() => {
+        button.classList.remove("is-depressed");
+      }, 75);
     }
+    // checks clear button...
     if (action === "clear") {
-      // checks clear button...
-      console.log("clear button");
+      button.classList.add("is-depressed");
+      setTimeout(() => {
+        button.classList.remove("is-depressed");
+      }, 75);
     }
+    //checks delete button...
     if (action === "delete") {
-      //checks delete button...
-      console.log("delete button");
+      button.classList.add("is-depressed");
+      setTimeout(() => {
+        button.classList.remove("is-depressed");
+      }, 75);
     }
   }
 });
