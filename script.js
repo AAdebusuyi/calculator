@@ -7,11 +7,13 @@ buttons.addEventListener("click", (e) => {
     const button = e.target;
     const action = button.dataset.action;
     const previousButtonType = calculator.dataset.previousButtonType;
+    const buttonContent = button.textContent;
+    const screenContent = screen.textContent;
 
     if (!action) {
-      screen.textContent === "0" || previousButtonType === "operator"
-        ? (screen.textContent = button.textContent)
-        : (screen.textContent = screen.textContent + button.textContent);
+      screenContent === "0" || previousButtonType === "operator"
+        ? (screen.textContent = buttonContent)
+        : (screen.textContent = screenContent + buttonContent);
       calculator.dataset.previousButtonType = "number";
       button.classList.add("is-depressed");
       setTimeout(function () {
@@ -25,7 +27,7 @@ buttons.addEventListener("click", (e) => {
       action === "subtract" ||
       action === "add"
     ) {
-      calculator.dataset.firstValue = screen.textContent;
+      calculator.dataset.firstValue = screenContent;
       calculator.dataset.operator = action;
       calculator.dataset.previousButtonType = "operator";
       button.classList.add("is-depressed");
@@ -37,7 +39,7 @@ buttons.addEventListener("click", (e) => {
     if (action === "calculate") {
       const firstNum = calculator.dataset.firstValue;
       const operator = calculator.dataset.operator;
-      const secondNum = screen.textContent;
+      const secondNum = screenContent;
 
       calculator.dataset.previousButtonType = "calculate";
       button.classList.add("is-depressed");
@@ -65,7 +67,11 @@ buttons.addEventListener("click", (e) => {
     }
 
     if (action === "decimal") {
-      screen.textContent = screen.textContent + button.textContent;
+      if (!screenContent.includes(".")) {
+        screen.textContent = screenContent + ".";
+      } else if ((previousButtonType = "operator")) {
+        screen.textContent = "0";
+      }
 
       calculator.dataset.previousButtonType = "calculate";
       button.classList.add("is-depressed");
