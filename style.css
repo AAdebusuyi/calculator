@@ -63,24 +63,15 @@ body {
   align-items: center;
 }
 
-.delete-buttons {
-  display: flex;
-  margin-top: 20px;
-  height: 80px;
-  /* border: 1px solid green; */
-  width: 80%;
-  justify-content: space-around;
-  border-radius: 10px;
-}
-
 button#clear {
   display: flex;
   justify-content: center;
   align-items: center;
   border: 2px solid black;
-  height: inherit;
+  height: 80px;
   width: 45%;
-  border-radius: inherit;
+  margin-top: 20px;
+  border-radius: 10px;
   background-color: palevioletred;
 }
 
@@ -89,9 +80,10 @@ button#delete {
   justify-content: center;
   align-items: center;
   border: 2px solid black;
-  height: inherit;
+  height: 80px;
+  margin-top: 20px;
   width: 45%;
-  border-radius: inherit;
+  border-radius: 10px;
   background-color: paleturquoise;
 }
 
