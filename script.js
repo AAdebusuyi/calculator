@@ -25,6 +25,8 @@ buttons.addEventListener("click", (e) => {
       action === "subtract" ||
       action === "add"
     ) {
+      calculator.dataset.firstValue = screen.textContent;
+      calculator.dataset.operator = action;
       calculator.dataset.previousButtonType = "operator";
       button.classList.add("is-depressed");
       setTimeout(function () {
@@ -33,11 +35,17 @@ buttons.addEventListener("click", (e) => {
     }
 
     if (action === "calculate") {
+      const firstNum = calculator.dataset.firstValue;
+      const operator = calculator.dataset.operator;
+      const secondNum = screen.textContent;
+
       calculator.dataset.previousButtonType = "calculate";
       button.classList.add("is-depressed");
       setTimeout(function () {
         button.classList.remove("is-depressed");
       }, 75);
+
+      screen.textContent = calculate(firstNum, operator, secondNum);
     }
 
     if (action === "clear") {
@@ -67,3 +75,18 @@ buttons.addEventListener("click", (e) => {
     }
   }
 });
+
+const calculate = (num1, operator, num2) => {
+  let result = "";
+  if (operator === "add") {
+    result = parseFloat(num1) + parseFloat(num2);
+  } else if (operator === "subtract") {
+    result = parseFloat(num1) - parseFloat(num2);
+  } else if (operator === "multiply") {
+    result = parseFloat(num1) * parseFloat(num2);
+  } else if (operator === "divide") {
+    result = parseFloat(num1) / parseFloat(num2);
+  }
+
+  return result;
+};
