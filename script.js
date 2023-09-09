@@ -84,9 +84,13 @@ const calculate = (num1, operator, num2) => {
     result = parseFloat(num1) - parseFloat(num2);
   } else if (operator === "multiply") {
     result = parseFloat(num1) * parseFloat(num2);
+  } else if (operator === "divide" && num2 === "0") {
+    result = "you can't divide by zero bro!";
   } else if (operator === "divide") {
     result = parseFloat(num1) / parseFloat(num2);
   }
 
   return result;
 };
+
+// at the moment calculator only works on two inputs at a time.
