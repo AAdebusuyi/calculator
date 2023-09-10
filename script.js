@@ -14,11 +14,11 @@ buttons.addEventListener("click", (e) => {
       screenContent === "0" || previousButtonType === "operator"
         ? (screen.textContent = buttonContent)
         : (screen.textContent = screenContent + buttonContent);
-      calculator.dataset.previousButtonType = "number";
       button.classList.add("is-depressed");
       setTimeout(function () {
         button.classList.remove("is-depressed");
       }, 75);
+      calculator.dataset.previousButtonType = "number";
     }
 
     if (
@@ -27,43 +27,61 @@ buttons.addEventListener("click", (e) => {
       action === "subtract" ||
       action === "add"
     ) {
-      calculator.dataset.firstValue = screenContent;
-      calculator.dataset.operator = action;
-      calculator.dataset.previousButtonType = "operator";
-      button.classList.add("is-depressed");
-      setTimeout(function () {
-        button.classList.remove("is-depressed");
-      }, 75);
-    }
-
-    if (action === "calculate") {
       const firstNum = calculator.dataset.firstValue;
       const operator = calculator.dataset.operator;
       const secondNum = screenContent;
 
-      calculator.dataset.previousButtonType = "calculate";
+      if (firstNum && operator && previousButtonType !== "operator") {
+        const calcValue = calculate(firstNum, operator, secondNum);
+        screen.textContent = calcValue;
+        calculator.dataset.firstValue = calcValue;
+      } else {
+        calculator.dataset.firstValue = screenContent;
+      }
+
+      calculator.dataset.firstValue = screenContent;
+      calculator.dataset.operator = action;
+      button.classList.add("is-depressed");
+      setTimeout(function () {
+        button.classList.remove("is-depressed");
+      }, 75);
+      calculator.dataset.previousButtonType = "operator";
+    }
+
+    if (action === "calculate") {
+      let firstNum = calculator.dataset.firstValue;
+      const operator = calculator.dataset.operator;
+      let secondNum = screenContent;
       button.classList.add("is-depressed");
       setTimeout(function () {
         button.classList.remove("is-depressed");
       }, 75);
 
-      screen.textContent = calculate(firstNum, operator, secondNum);
+      if (firstNum) {
+        if (previousButtonType === "calculate") {
+          firstNum = screenContent;
+          secondNum = calculator.dataset.modValue;
+        }
+        screen.textContent = calculate(firstNum, operator, secondNum);
+      }
+      calculator.dataset.modValue = secondNum;
+      calculator.dataset.previousButtonType = "calculate";
     }
 
     if (action === "clear") {
-      calculator.dataset.previousButtonType = "calculate";
       button.classList.add("is-depressed");
       setTimeout(function () {
         button.classList.remove("is-depressed");
       }, 75);
+      calculator.dataset.previousButtonType = "clear";
     }
 
     if (action === "delete") {
-      calculator.dataset.previousButtonType = "calculate";
       button.classList.add("is-depressed");
       setTimeout(function () {
         button.classList.remove("is-depressed");
       }, 75);
+      calculator.dataset.previousButtonType = "delete";
     }
 
     if (action === "decimal") {
@@ -73,11 +91,11 @@ buttons.addEventListener("click", (e) => {
         screen.textContent = "0";
       }
 
-      calculator.dataset.previousButtonType = "calculate";
       button.classList.add("is-depressed");
       setTimeout(function () {
         button.classList.remove("is-depressed");
       }, 75);
+      calculator.dataset.previousButtonType = "decimal";
     }
   }
 });
