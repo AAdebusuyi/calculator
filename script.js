@@ -11,7 +11,9 @@ buttons.addEventListener("click", (e) => {
     const screenContent = screen.textContent;
 
     if (!action) {
-      screenContent === "0" || previousButtonType === "operator"
+      screenContent === "0" ||
+      previousButtonType === "operator" ||
+      previousButtonType === "calculate"
         ? (screen.textContent = buttonContent)
         : (screen.textContent = screenContent + buttonContent);
       button.classList.add("is-depressed");
@@ -31,7 +33,12 @@ buttons.addEventListener("click", (e) => {
       const operator = calculator.dataset.operator;
       const secondNum = screenContent;
 
-      if (firstNum && operator && previousButtonType !== "operator") {
+      if (
+        firstNum &&
+        operator &&
+        previousButtonType !== "operator" &&
+        previousButtonType !== "calculate"
+      ) {
         const calcValue = calculate(firstNum, operator, secondNum);
         screen.textContent = calcValue;
         calculator.dataset.firstValue = calcValue;
@@ -69,6 +76,7 @@ buttons.addEventListener("click", (e) => {
     }
 
     if (action === "clear") {
+      location.reload();
       button.classList.add("is-depressed");
       setTimeout(function () {
         button.classList.remove("is-depressed");
@@ -87,7 +95,10 @@ buttons.addEventListener("click", (e) => {
     if (action === "decimal") {
       if (!screenContent.includes(".")) {
         screen.textContent = screenContent + ".";
-      } else if ((previousButtonType = "operator")) {
+      } else if (
+        previousButtonType === "operator" ||
+        previousButtonType === "calculate"
+      ) {
         screen.textContent = "0";
       }
 
