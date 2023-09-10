@@ -85,6 +85,8 @@ buttons.addEventListener("click", (e) => {
     }
 
     if (action === "delete") {
+      splicedInput = Array.from(screenContent).pop();
+      screen.textContent = splicedInput;
       button.classList.add("is-depressed");
       setTimeout(function () {
         button.classList.remove("is-depressed");
